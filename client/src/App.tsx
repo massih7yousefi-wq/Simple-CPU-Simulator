@@ -144,7 +144,7 @@ function App() {
     try {
       const state = await apiRequest<CpuState>('step', 'POST')
       setCpu(state)
-      addHistory(`Executed ${state.lastOperation ?? 'instruction'} Â· PC = ${state.pc}`)
+      addHistory(`Executed ${state.lastOperation ?? 'instruction'} · PC = ${state.pc}`)
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Step failed'
       setError(message)
@@ -169,7 +169,7 @@ function App() {
     try {
       const state = await apiRequest<CpuState>('run', 'POST')
       setCpu(state)
-      addHistory(`Run finished Â· status ${state.status} Â· PC = ${state.pc}`)
+      addHistory(`Run finished · status ${state.status} · PC = ${state.pc}`)
 
       if (state.status === 'Error') {
         setError(state.lastError ?? 'CPU execution failed')
@@ -230,7 +230,7 @@ function App() {
       <div className="dashboard">
         <header className="topbar glass">
           <a className="brand" href="#" aria-label="CPU Lab home">
-            <div className="brand-icon">C<span>â†—</span></div>
+            <div className="brand-icon">C<span>↗</span></div>
             <div>
               <div className="brand-name">NEXUS<span> CPU</span></div>
               <div className="brand-caption">ARCHITECTURE LAB / 01</div>
@@ -273,8 +273,8 @@ function App() {
 
         {notice && (
           <div className="notice glass" role="status">
-            <span>âœ¦</span> {notice}
-            <button onClick={() => setNotice('')} aria-label="Dismiss notice">Ã—</button>
+            <span>✦</span> {notice}
+            <button onClick={() => setNotice('')} aria-label="Dismiss notice">×</button>
           </div>
         )}
 
@@ -282,14 +282,14 @@ function App() {
           <div className="error-banner glass" role="alert">
             <span className="error-symbol">!</span>
             <div><strong>Execution error</strong><p>{error}</p></div>
-            <button onClick={() => setError('')} aria-label="Dismiss error">Ã—</button>
+            <button onClick={() => setError('')} aria-label="Dismiss error">×</button>
           </div>
         )}
 
         <div className="main-grid">
           <section className="panel editor-panel glass">
             <div className="panel-heading">
-              <div className="heading-icon purple">âŒ˜</div>
+              <div className="heading-icon purple">⌘</div>
               <div>
                 <h2>Program Editor</h2>
                 <p>Write your assembly instructions</p>
@@ -326,13 +326,13 @@ function App() {
               <span>i</span>
               <div>
                 <strong>Supported instructions</strong>
-                <p>LOAD Â· ADD Â· SUB Â· STORE Â· JMP Â· JZ Â· HALT</p>
+                <p>LOAD · ADD · SUB · STORE · JMP · JZ · HALT</p>
               </div>
             </div>
 
             <div className="editor-actions">
               <button className="button button-primary" onClick={loadProgram} disabled={busy}>
-                <span>â†“</span> Load Program
+                <span>↓</span> Load Program
               </button>
               <button className="button button-ghost" onClick={() => setProgramText(INITIAL_PROGRAM)} disabled={busy}>
                 Clear / Example
@@ -343,7 +343,7 @@ function App() {
           <div className="right-column">
             <section className="panel execution-panel glass">
               <div className="panel-heading">
-                <div className="heading-icon cyan">â–·</div>
+                <div className="heading-icon cyan">▷</div>
                 <div>
                   <h2>Execution Control</h2>
                   <p>Control the instruction cycle</p>
@@ -356,25 +356,25 @@ function App() {
                 <div className="instruction-code">{currentInstruction}</div>
                 <div className="instruction-meta">
                   <span>PC <b>{cpu.pc}</b></span>
-                  <span>OP <b>{cpu.lastOperation ?? 'â€”'}</b></span>
+                  <span>OP <b>{cpu.lastOperation ?? '—'}</b></span>
                 </div>
               </div>
 
               <div className="control-buttons">
                 <button className="button button-primary" onClick={stepCpu} disabled={busy || !loaded || cpu.status === 'Halted' || cpu.status === 'Error'}>
-                  <span>â–¸|</span> Step
+                  <span>▸|</span> Step
                 </button>
                 <button className="button button-run" onClick={runCpu} disabled={busy || !loaded || cpu.status === 'Halted' || cpu.status === 'Error'}>
-                  <span>â–¶</span> Run
+                  <span>▶</span> Run
                 </button>
                 <button className="button button-ghost reset-button" onClick={resetCpu} disabled={busy || !loaded}>
-                  <span>â†»</span> Reset
+                  <span>↻</span> Reset
                 </button>
               </div>
 
               <div className="execution-footer">
                 <span className={`tiny-status ${statusClass}`} />
-                {busy ? 'PROCESSING INSTRUCTIONâ€¦' : `${cpu.status.toUpperCase()} Â· ${loaded ? 'PROGRAM LOADED' : 'NO PROGRAM'}`}
+                {busy ? 'PROCESSING INSTRUCTION…' : `${cpu.status.toUpperCase()} · ${loaded ? 'PROGRAM LOADED' : 'NO PROGRAM'}`}
                 <span className="footer-spacer" />
                 <span className="mono">16-BIT</span>
               </div>
@@ -382,7 +382,7 @@ function App() {
 
             <section className="panel flags-panel glass">
               <div className="panel-heading compact-heading">
-                <div className="heading-icon gold">âš‘</div>
+                <div className="heading-icon gold">⚑</div>
                 <div>
                   <h2>CPU Flags</h2>
                   <p>Arithmetic condition state</p>
@@ -392,7 +392,7 @@ function App() {
               <div className="flag-row">
                 <div className="flag-name">
                   <span className={`flag-indicator ${cpu.zeroFlag ? 'flag-active' : ''}`} />
-                  <div><strong>Zero Flag</strong><small>Z Â· Result equals zero</small></div>
+                  <div><strong>Zero Flag</strong><small>Z · Result equals zero</small></div>
                 </div>
                 <span className={`flag-value ${cpu.zeroFlag ? 'on' : ''}`}>{cpu.zeroFlag ? '1 / SET' : '0 / CLEAR'}</span>
               </div>
@@ -402,7 +402,7 @@ function App() {
 
         <section className="panel registers-panel glass">
           <div className="panel-heading">
-            <div className="heading-icon blue">â–¤</div>
+            <div className="heading-icon blue">▤</div>
             <div>
               <h2>CPU Registers</h2>
               <p>16-bit general-purpose registers</p>
@@ -442,10 +442,10 @@ function App() {
 
         <section className="panel memory-panel glass">
           <div className="panel-heading memory-heading">
-            <div className="heading-icon green">â–¦</div>
+            <div className="heading-icon green">▦</div>
             <div>
               <h2>Memory Inspector</h2>
-              <p>256 addressable cells Â· 16-bit values</p>
+              <p>256 addressable cells · 16-bit values</p>
             </div>
             <div className="memory-tools">
               <select
@@ -491,24 +491,24 @@ function App() {
             <span><i className="legend-dot used" /> Non-zero data</span>
             <span><i className="legend-dot" /> Empty cell</span>
             <span className="footer-spacer" />
-            <span>SHOWING {memoryStart}â€“{Math.min(memoryStart + 31, 255)}</span>
+            <span>SHOWING {memoryStart}–{Math.min(memoryStart + 31, 255)}</span>
           </div>
         </section>
 
         <section className="panel history-panel glass">
           <div className="panel-heading">
-            <div className="heading-icon purple">â‰‹</div>
+            <div className="heading-icon purple">≪</div>
             <div>
               <h2>Execution Log</h2>
               <p>Recent simulator events</p>
             </div>
-            <button className="clear-log" onClick={() => setHistory([])}>Clear log Ã—</button>
+            <button className="clear-log" onClick={() => setHistory([])}>Clear log ×</button>
           </div>
 
           <div className="history-list">
             {history.length === 0 ? (
               <div className="history-empty">
-                <span>âŒ</span> Waiting for execution eventsâ€¦
+                <span>⌘</span> Waiting for execution events…
               </div>
             ) : history.map((item, index) => (
               <div className="history-item" key={`${item}-${index}`}>
@@ -520,8 +520,8 @@ function App() {
         </section>
 
         <footer className="app-footer">
-          <span> NEXUS CPU LAB <span className="footer-dot">Â·</span> EDUCATIONAL SIMULATOR</span>
-          <span>BUILT FOR COMPUTER ARCHITECTURE <span className="footer-dot">Â·</span> <span className="footer-online">SYSTEM ONLINE</span></span>
+          <span> NEXUS CPU LAB <span className="footer-dot">·</span> EDUCATIONAL SIMULATOR</span>
+          <span>BUILT FOR COMPUTER ARCHITECTURE <span className="footer-dot">·</span> <span className="footer-online">SYSTEM ONLINE</span></span>
         </footer>
       </div>
     </main>
@@ -529,4 +529,5 @@ function App() {
 }
 
 export default App
+
 
