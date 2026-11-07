@@ -1,0 +1,11 @@
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\bin\Release\net10.0\CpuSimulator.Core.deps.json
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\bin\Release\net10.0\CpuSimulator.Core.dll
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\bin\Release\net10.0\CpuSimulator.Core.pdb
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\obj\Release\net10.0\CpuSimulator.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\obj\Release\net10.0\CpuSimulator.Core.AssemblyInfoInputs.cache
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\obj\Release\net10.0\CpuSimulator.Core.AssemblyInfo.cs
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\obj\Release\net10.0\CpuSimulator.Core.csproj.CoreCompileInputs.cache
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\obj\Release\net10.0\CpuSimulator.Core.dll
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\obj\Release\net10.0\refint\CpuSimulator.Core.dll
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\obj\Release\net10.0\CpuSimulator.Core.pdb
+D:\save\fullstack project\CpuSimulator\src\CpuSimulator.Core\obj\Release\net10.0\ref\CpuSimulator.Core.dll

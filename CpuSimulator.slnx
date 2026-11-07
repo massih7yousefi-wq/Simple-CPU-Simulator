@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CpuSimulator.Api/CpuSimulator.Api.csproj" />
+    <Project Path="src/CpuSimulator.Core/CpuSimulator.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CpuSimulator.Core.Tests/CpuSimulator.Core.Tests.csproj" />
+  </Folder>
+</Solution>
